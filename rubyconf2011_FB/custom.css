@@ -1,0 +1,32 @@
+.basic-image {
+  background-color: #111;
+}
+
+.basic-image img {
+  height: 100%;
+  width: 100%;
+} 
+.basic-image h1 {
+  color: white;
+  position: absolute;
+  padding: 0.1em 0 0.5em 0.5em;
+}
+
+.basic-image h2 {
+  color: white;
+  position: absolute;
+  padding: 2em 0 0 10.5em;
+}
+
+.neworleans img {
+  height: 60%;
+  width: 60%;
+  position: center
+}
+
+.sessions img {
+  height: 60%;
+  width: 60%;
+  position: center
+}
+
