@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/example1/colorbox.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js"></script>
+
+    <style>
+      .bgBlue {
+        background-color: blue;
+      }
+      .bgRed {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="mainContent">
+      <div id="timestamp"></div>
+      <button id="addElem">エレメントを追加</button>
+      <div id="elems"></div>
+      <hr>
+      <button id="toggleElem">エレメントを表示/隠す</button>
+      <div class="square bgRed" style="width: 100px; height: 100px;"></div>
+      <hr>
+      <div id="pictures"></div>
+    </div>
+  </body>
+
+  <script>
+    $("#elems").append("<p>hoge</p>");
+    $('.square').toggle(800);
+
+    // DRY: Do not repeat yourself
+    $("button").toggle(800);
+    $("button").toggle(800);
+    $("button").toggle(800);
+    $("button").toggle(800);
+
+    $('#addElem').click(function(){
+      $("#elems").append("<p>hoge</p>");
+    });
+
+    $('#toggleElem').click(function(){
+      $('.square').toggle();
+    });
+
+    $('div.square')
+      .mouseenter(function() {
+        $(this).removeClass('bgRed');
+        $(this).addClass('bgBlue');
+      })
+      .mouseout(function() {
+        $(this).removeClass('bgBlue');
+        $(this).addClass('bgRed');
+      });
+  </script>
+
+  <script>
+    //時刻データを取得して変数jikanに格納する
+    var timestamp= new Date();
+
+    //時・分・秒を取得する
+    var hour   = timestamp.getHours();
+    var minute = timestamp.getMinutes();
+    var second = timestamp.getSeconds();
+
+    $("#timestamp").text(hour+"時" + minute + "分" + second + "秒");
+
+    var pictures = [
+      'http://s3-ap-northeast-1.amazonaws.com/compathy-production-tokyo/user_photos/images/000/016/711/medium/P3221641.JPG?1396039993',
+      'http://s3-ap-northeast-1.amazonaws.com/compathy-production-tokyo/user_photos/images/000/016/713/medium/P3221746.JPG?1396040051',
+      'http://s3-ap-northeast-1.amazonaws.com/compathy-production-tokyo/user_photos/images/000/016/602/medium/IMGP0225.JPG?1395948091'
+    ];
+
+    var thumbs = [
+      'https://graph.facebook.com/masaki925/picture?width=130&height=130',
+      'https://graph.facebook.com/horie.kentaro/picture?width=130&height=130',
+      'https://graph.facebook.com/sakura.tanaka.718689/picture?width=130&height=130',
+    ];
+
+    var number = Math.floor( Math.random() * 3 );
+
+    //$('#pictures').append('<img id="pic" src="' + pictures[number] + '">' );
+    $('#pictures').append('<img src="' + thumbs[number] + '">' );
+  </script>
+</html>
